@@ -582,31 +582,30 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
 
-    nav .nav-links {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .logo-container img {
-        height: 50px;
-    }
+  /* menu vlevo */
+  nav {
+    order: 1;
+  }
 
-    .hero {
-        height: 40vh;
-    }
+  /* hamburger vlevo (pokud ho chceš úplně vlevo) */
+  .hamburger {
+    order: 1;
+  }
 
-    .hero-content h1 {
-        font-size: 2rem;
-    }
+  /* logo vpravo */
+  .logo-container {
+    order: 2;
+  }
 
-    .services-container {
-        flex-direction: column;
-        align-items: center;
-    }
+  /* menší logo na mobilu */
+  .logo-container img {
+    height: 32px;
+  }
 }
