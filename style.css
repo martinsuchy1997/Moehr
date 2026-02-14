@@ -1,7 +1,7 @@
 :root {
     --primary: #CE0036;
     --dark: #000000;
-    --light: #f4f4f4;
+    --light: #ffffff;
     --font: 'Montserrat', sans-serif;
 }
 
@@ -22,7 +22,7 @@ body {
 /* HEADER */
 header {
     width: 100%;
-    background: #fff;
+    background: #ffffffc8;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
@@ -31,7 +31,7 @@ header {
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     align-items: center;
