@@ -521,25 +521,39 @@ footer {
     color: #666;
     line-height: 1.6;
 }
-/* --- MOBILNÍ MENU --- */
+/* --- MOBILNÍ MENU ÚPRAVY --- */
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
-    z-index: 1001;
 }
 
 .hamburger span {
-    width: 30px;
+    width: 25px;
     height: 3px;
     background: var(--dark);
-    transition: 0.3s;
 }
 
 @media (max-width: 768px) {
-    .hamburger { display: flex; }
+    /* Zmenšení loga na mobilu */
+    .logo-container img {
+        height: 30px; 
+    }
 
+    /* Seřazení loga a hamburgeru vedle sebe */
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Schování původního menu a styl vysouvání */
     .nav-links {
         position: fixed;
         right: -100%;
@@ -548,14 +562,16 @@ footer {
         height: 100vh;
         background: white;
         flex-direction: column;
-        padding: 100px 40px;
-        transition: 0.4s;
+        padding: 80px 30px;
+        transition: 0.3s;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         z-index: 1000;
     }
 
-    .nav-links.active { right: 0; }
-    
+    .nav-links.active {
+        right: 0;
+    }
+
     /* Animace hamburgeru na X */
     .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
