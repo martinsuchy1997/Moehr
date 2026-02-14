@@ -121,19 +121,6 @@ document.querySelectorAll(".modal-img").forEach(img => {
     });
 });
 
-if (lightbox) {
-    lightbox.addEventListener('click', function(e) {
-        // Zavřít při kliknutí kamkoliv mimo samotný obrázek
-        if (e.target !== lightboxImg) {
-            lightbox.style.display = "none";
-            if (!document.querySelector('.modal[style*="display: block"]')) {
-                document.body.style.overflow = 'auto';
-            }
-        }
-    });
-}
-
-
 // --- 6. KONTAKTNÍ FORMULÁŘ ---
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
@@ -167,19 +154,22 @@ if (window.innerWidth > 1024) {
     });
 }
 
-// Aktivace mobilního menu
-const burger = document.getElementById('hamburger');
-const menu = document.getElementById('nav-links');
+// --- OVLÁDÁNÍ MOBILNÍHO MENU ---
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const navItems = document.querySelectorAll('.nav-links a');
 
-if (burger) {
-    burger.addEventListener('click', () => {
-        menu.classList.toggle('active');
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
 }
 
-// Zavření menu po kliku na odkaz
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        menu.classList.remove('active');
+// Zavření menu po kliknutí na odkaz
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
     });
 });

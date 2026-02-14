@@ -80,7 +80,7 @@ nav .nav-links a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    background: url("fotky/1.jpeg") no-repeat center center/cover;
     z-index: -1;
     transform: translateY(0px);
     transition: transform 0.1s linear;
@@ -235,6 +235,14 @@ nav .nav-links a:hover {
     color: black;
 }
 
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 /* CONTACT SECTION */
 .contact {
     padding: 80px 5%;
@@ -368,13 +376,89 @@ footer {
     cursor: pointer;
 }
 
+.modal-images {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-images img {
+    width: 48%;
+    border-radius: 10px;
+}
+
+/* MODAL MODERN DESIGN */
+.modal-content {
+    background: #fff;
+    padding: 35px;
+    border-radius: 18px;
+    max-width: 900px;
+    position: relative;
+}
+
+.modal-subtitle {
+    color: #777;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* ACCORDION */
+.accordion-btn {
+    width: 100%;
+    background: #f4f4f4;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.accordion-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px 10px 15px 10px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* FOTKY */
+.modal-images {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-img {
+    width: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-img:hover {
+    transform: scale(1.05);
+}
+
 /* SEKCE PROCESU */
 .process-section {
     padding: 100px 5%;
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Jemně šedé pozadí pro kontrast */
     text-align: center;
 }
 
+.section-title {
+    margin-bottom: 60px;
+    font-size: 2.2rem;
+}
+
+/* GRID SYSTÉM */
 .process-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -383,19 +467,27 @@ footer {
     margin: 0 auto;
 }
 
+/* KARTA */
 .process-card {
     background: #ffffff;
     padding: 50px 30px 30px 30px;
     border-radius: 20px;
-    position: relative;
+    position: relative; /* Nutné pro vyčnívající ikonu */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.564);
     transition: all 0.3s ease;
     border: 1px solid #000000;
 }
 
+.process-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px #ce0037a0
+}
+
+/* VYČNÍVAJÍCÍ IKONA */
 .process-icon {
     position: absolute;
-    top: -30px;
+    top: -30px; /* Posun o polovinu ven */
     left: 50%;
     transform: translateX(-50%);
     width: 65px;
@@ -407,43 +499,47 @@ footer {
     justify-content: center;
     color: white;
     font-size: 1.8rem;
-    border: 4px solid #ffffff;
+    border: 4px solid #ffffff; /* Bílý kroužek kolem ikony */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* HAMBURGER ZÁKLAD */
+.process-icon img {
+    width: 60%;
+    height: auto;
+    filter: brightness(0) invert(1); /* Udělá logo bílé, pokud je černé */
+}
+
+/* TEXTY V KARTĚ */
+.process-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.process-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+/* --- MOBILNÍ MENU --- */
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
+    z-index: 1001;
 }
 
 .hamburger span {
-    width: 25px;
+    width: 30px;
     height: 3px;
     background: var(--dark);
     transition: 0.3s;
 }
 
-/* --- RESPONZIVITA PRO MOBILY (768px a méně) --- */
 @media (max-width: 768px) {
-    /* Logo a Hamburger vedle sebe */
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-    }
+    .hamburger { display: flex; }
 
-    .logo-container img {
-        height: 30px; /* Menší logo */
-    }
-
-    .hamburger {
-        display: flex; /* Zobrazit čárky */
-    }
-
-    /* Menu se schová doprava */
     .nav-links {
         position: fixed;
         right: -100%;
@@ -452,25 +548,64 @@ footer {
         height: 100vh;
         background: white;
         flex-direction: column;
-        padding: 80px 30px;
-        transition: 0.3s;
+        padding: 100px 40px;
+        transition: 0.4s;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         z-index: 1000;
-        gap: 20px;
     }
 
-    .nav-links.active {
-        right: 0;
-    }
-
-    /* Křížek z hamburgeru */
-    .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-links.active { right: 0; }
+    
+    /* Animace hamburgeru na X */
+    .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
 
-    /* Ostatní mobilní úpravy */
-    .pricing-container { flex-direction: column; align-items: center; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .hero-content h1 { font-size: 2rem; }
-    .process-grid { gap: 60px; }
+/* RESPONZIVITA */
+@media (max-width: 768px) {
+    .process-grid {
+        gap: 60px; /* Větší mezera na mobilu kvůli vyčnívajícím ikonám */
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-info .office-photo {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* menu vlevo */
+  nav {
+    order: 1;
+  }
+
+  /* hamburger vlevo (pokud ho chceš úplně vlevo) */
+  .hamburger {
+    order: 1;
+  }
+
+  /* logo vpravo */
+  .logo-container {
+    order: 2;
+  }
+
+  /* menší logo na mobilu */
+  .logo-container img {
+    height: 32px;
+  }
 }
