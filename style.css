@@ -1,0 +1,611 @@
+:root {
+    --primary: #CE0036;
+    --dark: #000000;
+    --light: #ffffff;
+    --font: 'Montserrat', sans-serif;
+}
+
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    color: var(--dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    background: #ffffffc8;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.logo-container img {
+    height: 40px;
+    width: auto;
+}
+
+nav .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav .nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+nav .nav-links a:hover {
+    color: var(--primary);
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("fotky/1.jpeg") no-repeat center center/cover;
+    z-index: -1;
+    transform: translateY(0px);
+    transition: transform 0.1s linear;
+}
+
+.hero-bg::before {
+    content:"";
+    position: absolute;
+    top:0; left:0;
+    width: 100%; height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index:1;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+.btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(206,0,54,0.4);
+}
+
+/* CONTENT SECTION */
+.content-section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* PRICING SEKCE */
+.pricing-section {
+    background: #ffffff;
+    padding: 90px 5%;
+    text-align: center;
+}
+
+.pricing-title {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+}
+
+/* KONTEJNER */
+.pricing-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* KARTA */
+.pricing-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: 0.3s ease;
+    border-top: 6px solid var(--primary);
+}
+
+/* PREMIUM */
+.pricing-card.premium {
+    transform: scale(1.05);
+    border: 2px solid var(--primary);
+    box-shadow: 0 25px 60px rgba(206,0,54,0.4);
+}
+
+/* HOVER */
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+
+/* NADPISY */
+.pricing-card h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.pricing-card h4 {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* SEZNAM */
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.pricing-card li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* BADGE */
+.pricing-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--primary);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.premium-badge {
+    background: gold;
+    color: black;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* CONTACT SECTION */
+.contact {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+/* GRID FORM + INFO */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* FORMULÁŘ */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(206,0,54,0.3);
+    outline: none;
+}
+
+.contact-form button.btn {
+    align-self: flex-start;
+}
+
+/* KONTAKT INFO */
+.contact-info {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.contact-info .office-photo {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-info h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.contact-info a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    color: var(--primary);
+}
+
+/* FOOTER */
+footer {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: #fff;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-images {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-images img {
+    width: 48%;
+    border-radius: 10px;
+}
+
+/* MODAL MODERN DESIGN */
+.modal-content {
+    background: #fff;
+    padding: 35px;
+    border-radius: 18px;
+    max-width: 900px;
+    position: relative;
+}
+
+.modal-subtitle {
+    color: #777;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* ACCORDION */
+.accordion-btn {
+    width: 100%;
+    background: #f4f4f4;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.accordion-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px 10px 15px 10px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* FOTKY */
+.modal-images {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-img {
+    width: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-img:hover {
+    transform: scale(1.05);
+}
+
+/* SEKCE PROCESU */
+.process-section {
+    padding: 100px 5%;
+    background-color: #f8f9fa; /* Jemně šedé pozadí pro kontrast */
+    text-align: center;
+}
+
+.section-title {
+    margin-bottom: 60px;
+    font-size: 2.2rem;
+}
+
+/* GRID SYSTÉM */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* KARTA */
+.process-card {
+    background: #ffffff;
+    padding: 50px 30px 30px 30px;
+    border-radius: 20px;
+    position: relative; /* Nutné pro vyčnívající ikonu */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.564);
+    transition: all 0.3s ease;
+    border: 1px solid #000000;
+}
+
+.process-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px #ce0037a0
+}
+
+/* VYČNÍVAJÍCÍ IKONA */
+.process-icon {
+    position: absolute;
+    top: -30px; /* Posun o polovinu ven */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 65px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    border: 4px solid #ffffff; /* Bílý kroužek kolem ikony */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.process-icon img {
+    width: 60%;
+    height: auto;
+    filter: brightness(0) invert(1); /* Udělá logo bílé, pokud je černé */
+}
+
+/* TEXTY V KARTĚ */
+.process-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.process-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+/* --- MOBILNÍ MENU --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: var(--dark);
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 100px 40px;
+        transition: 0.4s;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active { right: 0; }
+    
+    /* Animace hamburgeru na X */
+    .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
+
+/* RESPONZIVITA */
+@media (max-width: 768px) {
+    .process-grid {
+        gap: 60px; /* Větší mezera na mobilu kvůli vyčnívajícím ikonám */
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-info .office-photo {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* menu vlevo */
+  nav {
+    order: 1;
+  }
+
+  /* hamburger vlevo (pokud ho chceš úplně vlevo) */
+  .hamburger {
+    order: 1;
+  }
+
+  /* logo vpravo */
+  .logo-container {
+    order: 2;
+  }
+
+  /* menší logo na mobilu */
+  .logo-container img {
+    height: 32px;
+  }
+}
