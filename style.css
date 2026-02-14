@@ -521,6 +521,46 @@ footer {
     color: #666;
     line-height: 1.6;
 }
+/* --- MOBILNÍ MENU --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: var(--dark);
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 100px 40px;
+        transition: 0.4s;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active { right: 0; }
+    
+    /* Animace hamburgeru na X */
+    .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
 
 /* RESPONZIVITA */
 @media (max-width: 768px) {

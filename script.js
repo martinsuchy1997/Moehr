@@ -166,3 +166,23 @@ if (window.innerWidth > 1024) {
         });
     });
 }
+
+// --- OVLÁDÁNÍ MOBILNÍHO MENU ---
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const navItems = document.querySelectorAll('.nav-links a');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+}
+
+// Zavření menu po kliknutí na odkaz
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
