@@ -197,6 +197,7 @@ nav .nav-links a:hover {
     padding: 50px 50px 10px 50px;
     border-radius: 20px 20px 0 0; /* Zaoblení jen nahoře */
     margin-bottom: 0;
+    text-align: center;
 }
 
 /* Spodní část buňky s textem */
@@ -211,14 +212,14 @@ nav .nav-links a:hover {
 /* Úprava pro mobily (aby text nebyl nalepený na okrajích) */
 @media (max-width: 768px) {
     #o-nas h2, #o-nas p {
-        padding-left: 25px;
+        padding-left: 30px;
         padding-right: 25px;
     }
     #o-nas h2 { padding-top: 30px; }
-    #o-nas p { padding-bottom: 18px; }
+    #o-nas p { padding-bottom: 10px; }
 }
 
-/* PRICING SEKCE */
+/* BALÍČKY */
 .pricing-section {
     background: #ffffff;
     padding: 90px 5%;
