@@ -128,107 +128,55 @@ nav .nav-links a:hover {
     box-shadow: 0 10px 20px rgba(206,0,54,0.4);
 }
 
-/* CONTENT SECTION - O NÁS */
-.content-section {
-    padding: 100px 5%;
-    background-color: var(--light); /* Bílé pozadí celé sekce */
-    display: flex;
-    justify-content: center;
-}
+/* --- OPRAVENÁ SEKCE O NÁS --- */
 
-#o-nas.content-section {
-    /* Vynulujeme max-width u sekce, aby se mohl centrovat vnitřní box */
-    max-width: 100%; 
-}
-
-/* Styl pro "buňku" (šedý box) */
-#o-nas p, 
-#o-nas h2 {
-    text-align: flex; /* Text v buňce vypadá lépe zarovnaný doleva nebo do bloku */
-}
-
-#o-nas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Vytvoření šedé buňky přímo z obsahu */
-#o-nas > * {
-    max-width: 900px; /* Šířka buňky */
-}
-
-/* Pokud chceš, aby nadpis i text byly v jednom šedém boxu, 
-   nejlepší je toto stylování pro celou sekci: */
-#o-nas {
-    background-color: var(--light);
-}
-
-#o-nas.content-section {
-    padding: 80px 20px;
-}
-
-/* Samotná šedá buňka */
-#o-nas {
-    display: block; /* Reset flexu pro vnitřní uspořádání */
-}
-
-#o-nas h2, #o-nas p {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Finální úprava: Přidání šedého pozadí pod text */
-#o-nas {
-    background: var(--light); /* Pozadí sekce */
-}
-
-/* Vytvoříme efekt buňky pomocí úpravy paddingu a pozadí vnitřku */
-#o-nas {
-    text-align: center;
-}
-
-/* Takhle docílíš té šedé buňky na bílém podkladu */
-#o-nas {
-    background-color: #ffffff; /* Bílé okolí */
-}
-
-#o-nas {
-    /* Přidáme "obal" pomocí vnitřního stylu */
+/* Základní kontejner sekce */
+.content-section#o-nas {
     padding: 80px 5%;
-}
-
-/* Selektor pro konkrétní úpravu textového bloku jako buňky */
-#o-nas {
+    background-color: #ffffff; /* Bílé okolí buňky */
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
 }
 
-#o-nas h2, #o-nas p {
-    background-color: #f5f5f5; /* Jemná šedá barva buňky */
-    width: 100%;
-    max-width: 900px;
-}
-
-#o-nas h2 {
-    margin-bottom: 0;
-    padding: 40px 40px 10px 40px;
-    border-radius: 20px 20px 0 0; /* Zaoblení jen nahoře */
-}
-
+/* Společný styl pro šedou buňku (Nadpis i Text) */
+#o-nas h2, 
 #o-nas p {
-    margin-top: 0;
-    padding: 0 40px 40px 40px;
-    border-radius: 0 0 20px 20px; /* Zaoblení jen dole */
-    text-align: justify; /* Text do bloku vypadá v buňce profesionálně */
+    background-color: #f5f5f5; /* Světle šedé pozadí buňky */
+    width: 100%;
+    max-width: 900px;         /* Maximální šířka textového bloku */
+    margin: 0 auto;           /* Vycentrování na střed */
+    box-sizing: border-box;
+    text-align: left;         /* KLÍČOVÁ ZMĚNA: Opravuje obří mezery mezi slovy */
+    hyphens: none;            /* Vypne dělení slov, pokud není potřeba */
 }
 
-.content-section p {
-    text-align: justify;
-    hyphens: auto;           /* Automatické dělení slov */
-    -webkit-hyphens: auto;   /* Podpora pro Safari/Chrome */
+/* Horní část buňky s nadpisem */
+#o-nas h2 {
+    padding: 50px 50px 10px 50px;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    text-align: center;
+
+}
+
+/* Spodní část buňky s textem */
+#o-nas p {
+    padding: 0 50px 50px 50px;
+    line-height: 1.7;             /* Zvětší rozestup řádků pro lepší čitelnost */
+    font-size: 1rem;
+    color: #000000;
+}
+
+/* Úprava pro mobily (aby text nebyl nalepený na okrajích) */
+@media (max-width: 768px) {
+    #o-nas h2, #o-nas p {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    #o-nas h2 { padding-top: 30px; }
+    #o-nas p { padding-bottom: 30px; }
 }
 
 /* PRICING SEKCE */
@@ -504,7 +452,7 @@ footer {
 
 .section-title {
     margin-bottom: 60px;
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 .process-grid {
