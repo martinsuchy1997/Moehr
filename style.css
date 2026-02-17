@@ -172,7 +172,7 @@ nav .nav-links a:hover {
 /* ... Vaše horní styly nechte stejné ... */
 
 /* Úprava pro mobily (PROFESIONÁLNÍ VZHLED) */
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
     /* Uvolníme šířku kontejneru, aby box nebyl nalepený na kraji obrazovky */
     .content-section#o-nas {
         padding: 40px 15px; /* Menší padding kolem celé sekce */
