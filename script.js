@@ -13,7 +13,7 @@ window.addEventListener('scroll', function() {
 });
 
 // --- 2. PLYNULÉ POSOUVÁNÍ (SMOOTH SCROLL) ---
-const navOffset = 100; // Rezerva pro fixní menu
+const navOffset = 30; // Rezerva pro fixní menu
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         // Ignorovat, pokud jde jen o prázdný odkaz nebo odkaz v modalu, který má jiný účel
@@ -35,15 +35,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // --- 3. MODAL SYSTÉM (PRO BALÍČKY SLUŽEB) ---
 
-// Funkce pro bezpečné zavření modalu
+// Funkce pro bezpečné zavření modalu pomocí třídy
 function closeModal(modalElement) {
     if (modalElement) {
-        modalElement.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Vrátí možnost scrollovat webem
+        modalElement.classList.remove('is-open'); // Odstraní třídu pro viditelnost
+        document.body.style.overflow = 'auto';    // Vrátí scrollbar
     }
 }
 
-// Otevírání modalů
+// Otevírání modalů pomocí třídy
 const modalButtons = document.querySelectorAll('.modal-btn');
 modalButtons.forEach(btn => {
     btn.addEventListener('click', function(e) {
@@ -51,87 +51,68 @@ modalButtons.forEach(btn => {
         const modalId = this.getAttribute('data-modal');
         const modal = document.getElementById(modalId);
         if (modal) {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Zamezí scrollování pod modalem
+            modal.classList.add('is-open');       // Přidá třídu pro zobrazení
+            document.body.style.overflow = 'hidden'; // Zamkne scroll
         }
     });
 });
 
-// Zavírání modalů - vylepšeno pro mobilní zařízení
-// Nasloucháme na křížek, pozadí modalu i tlačítka uvnitř
+// Zavírání modalů (kliknutí na křížek, pozadí nebo tlačítko)
 window.addEventListener('click', function(e) {
     // 1. Kliknutí na křížek (třída .close)
     if (e.target.classList.contains('close')) {
         closeModal(e.target.closest('.modal'));
     }
     
-    // 2. Kliknutí na šedé pozadí modalu
-    if (e.target.classList.contains('modal')) {
-        closeModal(e.target);
+    // 2. Kliknutí na pozadí modalu (nyní kontrolujeme modal-overlay nebo modal samotný)
+    if (e.target.classList.contains('modal') || e.target.classList.contains('modal-overlay')) {
+        closeModal(e.target.closest('.modal'));
     }
 
-    // 3. Kliknutí na tlačítko "Mám zájem" uvnitř modalu
-    if (e.target.classList.contains('btn-full') || e.target.closest('.btn-full')) {
-        // Necháme odkaz pracovat (skok na kontakt), ale modal zavřeme
+    // 3. Kliknutí na tlačítko "Mám zájem"
+    if (e.target.classList.contains('btn-full')) {
         closeModal(e.target.closest('.modal'));
     }
 });
 
-// Speciální podpora pro mobilní "tap" na křížek (odstraňuje prodlevu prohlížeče)
+// Podpora pro mobilní "tap" na křížek
 document.querySelectorAll('.close').forEach(closeBtn => {
     closeBtn.addEventListener('touchstart', function(e) {
-        e.preventDefault(); // Zabrání zdvojenému kliknutí
+        e.preventDefault();
         closeModal(this.closest('.modal'));
     }, { passive: false });
 });
 
-
-// --- 4. ACCORDION (HARMONIKA V MODALU) ---
+// --- 4. ACCORDION (CHYTRÁ HARMONIKA) ---
 document.querySelectorAll(".accordion-btn").forEach(btn => {
     btn.addEventListener("click", function() {
-        this.classList.toggle("active");
-        let content = this.nextElementSibling;
-        
-        if (content) {
-            // Přepínání viditelnosti
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                this.querySelector('.acc-icon').textContent = '+';
-            } else {
-                content.style.display = "block";
-                this.querySelector('.acc-icon').textContent = '−';
+        // Najdeme skupinu, ve které se nacházíme (konkrétní modal)
+        const parent = this.closest('.accordion-group');
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('.acc-icon');
+
+        // 1. Zavřeme všechny ostatní otevřené sekce v tomto modalu
+        parent.querySelectorAll('.accordion-content').forEach(otherContent => {
+            if (otherContent !== content) {
+                otherContent.style.display = "none";
+                // Resetujeme ikonky u ostatních tlačítek
+                const otherBtn = otherContent.previousElementSibling;
+                otherBtn.querySelector('.acc-icon').textContent = '+';
+                otherBtn.classList.remove("active");
             }
+        });
+
+        // 2. Přepneme (otevřeme/zavřeme) tu, na kterou jsme klikli
+        this.classList.toggle("active");
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            icon.textContent = '+';
+        } else {
+            content.style.display = "block";
+            icon.textContent = '−';
         }
     });
 });
-
-
-// --- 5. LIGHTBOX (ZVĚTŠOVÁNÍ FOTEK) ---
-// Poznámka: Vyžaduje v HTML prvek <div id="lightbox"><img id="lightbox-img"></div>
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-document.querySelectorAll(".modal-img").forEach(img => {
-    img.addEventListener("click", () => {
-        if (lightbox && lightboxImg) {
-            lightbox.style.display = "flex";
-            lightboxImg.src = img.src;
-            document.body.style.overflow = 'hidden';
-        }
-    });
-});
-
-// --- 6. KONTAKTNÍ FORMULÁŘ ---
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Zde by normálně proběhlo odeslání na server přes fetch/ajax
-        alert('Děkujeme! Vaše poptávka byla úspěšně odeslána. Brzy se vám ozveme.');
-        this.reset();
-    });
-}
-
 
 // --- 7. ANIMACE CENOVÝCH KARET ---
 // Jemné měřítko při najetí myší (pouze pro desktopy)
