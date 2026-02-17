@@ -169,39 +169,55 @@ nav .nav-links a:hover {
     color: #000000;
 }
 
-/* ... Vaše horní styly nechte stejné ... */
 
-/* Úprava pro mobily (PROFESIONÁLNÍ VZHLED) */
-@media (max-width: 1080px) {
-    /* Uvolníme šířku kontejneru, aby box nebyl nalepený na kraji obrazovky */
-    .content-section#o-nas {
-        padding: 40px 15px; /* Menší padding kolem celé sekce */
-    }
-
-    /* Nadpis i text - společné úpravy */
-    #o-nas h2, 
-    #o-nas p {
-        padding-left: 20px;  /* Stačí menší vnitřní okraj */
-        padding-right: 20px;
-        width: 100%;         /* Jistota, že využije prostor */
-    }
-
-    /* Nadpis */
-    #o-nas h2 {
-        padding-top: 30px;
-        font-size: 1.4rem;   /* Na mobilu může být nadpis opticky větší */
-        text-align: center;  /* Nadpis na střed je OK */
-    }
-
-    /* Text odstavce - ZDE JE TA HLAVNÍ ZMĚNA */
-    #o-nas p {
-        padding-bottom: 30px;
-        text-align: left;      /* 1. Zarovnání vlevo se na mobilu čte nejlépe */
-        hyphens: auto;         /* 2. Zapne dělení slov (zabrání zubům na pravé straně) */
-        -webkit-hyphens: auto; /* Podpora pro Safari/iOS */
-        line-height: 1.6;      /* Optimální výška řádku pro mobil */
-    }
+/* Základní kontejner sekce */
+.content-section#o-nas {
+    padding: 80px 5%;
+    background-color: #ffffff; /* Bílé okolí buňky */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
 }
+
+/* Společný styl pro šedou buňku (Nadpis i Text) */
+#o-nas h2, 
+#o-nas p {
+    background-color: #f5f5f5; /* Světle šedé pozadí buňky */
+    width: 100%;
+    max-width: 900px;         /* Maximální šířka textového bloku */
+    margin: 0 auto;           /* Vycentrování na střed */
+    box-sizing: border-box;
+    text-align: left;         /* KLÍČOVÁ ZMĚNA: Opravuje obří mezery mezi slovy */
+    hyphens: none;            /* Vypne dělení slov, pokud není potřeba */
+}
+
+/* Horní část buňky s nadpisem */
+#o-nas h2 {
+    padding: 50px 50px 10px 50px;
+    border-radius: 20px 20px 0 0; /* Zaoblení jen nahoře */
+    margin-bottom: 0;
+}
+
+/* Spodní část buňky s textem */
+#o-nas p {
+    padding: 0 50px 50px 50px;
+    border-radius: 0 0 20px 20px; /* Zaoblení jen dole */
+    line-height: 1.7;             /* Zvětší rozestup řádků pro lepší čitelnost */
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Úprava pro mobily (aby text nebyl nalepený na okrajích) */
+@media (max-width: 768px) {
+    #o-nas h2, #o-nas p {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    #o-nas h2 { padding-top: 30px; }
+    #o-nas p { padding-bottom: 30px; }
+}
+
 /* PRICING SEKCE */
 .pricing-section {
     background: #ffffff;
