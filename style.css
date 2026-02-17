@@ -225,6 +225,12 @@ nav .nav-links a:hover {
     text-align: justify; /* Text do bloku vypadá v buňce profesionálně */
 }
 
+.content-section p {
+    text-align: justify;
+    hyphens: auto;           /* Automatické dělení slov */
+    -webkit-hyphens: auto;   /* Podpora pro Safari/Chrome */
+}
+
 /* PRICING SEKCE */
 .pricing-section {
     background: #ffffff;
