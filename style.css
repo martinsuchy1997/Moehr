@@ -209,16 +209,6 @@ nav .nav-links a:hover {
     color: #333;
 }
 
-/* Úprava pro mobily (aby text nebyl nalepený na okrajích) */
-@media (max-width: 768px) {
-    #o-nas h2, #o-nas p {
-        padding-left: 30px;
-        padding-right: 25px;
-    }
-    #o-nas h2 { padding-top: 30px; }
-    #o-nas p { padding-bottom: 10px; }
-}
-
 /* BALÍČKY */
 .pricing-section {
     background: #ffffff;
@@ -736,4 +726,29 @@ footer {
         justify-content: space-between;
         flex-direction: row; /* Zajišťuje správné pořadí prvků na krajích */
     }
+
+    .section-title {
+    margin-bottom: 60px;
+    font-size: 1.8rem;
 }
+.pricing-title {
+    font-size: 1.8rem;
+}
+
+/* Úprava pro mobily (aby text nebyl nalepený na okrajích) */
+    #o-nas h2, #o-nas p {
+        padding-left: 30px;
+        padding-right: 25px;
+    }
+    #o-nas h2 { 
+        padding-top: 30px;
+        font-size: 1.8rem;
+    }
+    #o-nas p { 
+        padding-bottom: 10px;
+        font-size: 1rem;
+    
+    }
+
+}
+
