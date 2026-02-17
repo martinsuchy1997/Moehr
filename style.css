@@ -148,7 +148,7 @@ nav .nav-links a:hover {
     max-width: 900px;         /* Maximální šířka textového bloku */
     margin: 0 auto;           /* Vycentrování na střed */
     box-sizing: border-box;
-    text-align: left;         /* KLÍČOVÁ ZMĚNA: Opravuje obří mezery mezi slovy */
+    text-align: center;         /* KLÍČOVÁ ZMĚNA: Opravuje obří mezery mezi slovy */
     hyphens: none;            /* Vypne dělení slov, pokud není potřeba */
 }
 
