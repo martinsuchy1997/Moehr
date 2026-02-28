@@ -374,14 +374,26 @@ footer {
     margin-bottom: 10px;
 }
 
+.modal-tag1 {
+    background: gold;
+    color: #000000;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
 .modal-header h2 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--dark);
 }
 
 .modal-subtitle {
-    color: #666;
+    color: #4a4a4a;
     margin: 5px 0 0 0;
 }
 
@@ -419,13 +431,14 @@ footer {
     padding: 15px 20px;
     background: #fff;
     border: none;
-    display: flex;
+    display: center;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     font-weight: bold;
     font-family: var(--font);
     transition: background 0.2s;
+    font-size: 1rem;
 }
 
 .accordion-btn:hover { background: #fdfdfd; }
@@ -629,6 +642,49 @@ footer {
 
 .contact-info a:hover {
     color: var(--primary);
+}
+
+.banner-thumb {
+    width: 120px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: opacity 0.2s;
+}
+.banner-thumb:hover {
+    opacity: 0.8;
+}
+
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#lightbox.active {
+    display: flex;
+}
+#lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    cursor: default;
+}
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+}
+.lightbox-close:hover {
+    color: #ccc;
 }
 
 /* ======================= MOBILE FIXES ======================= */

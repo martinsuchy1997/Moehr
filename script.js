@@ -154,3 +154,11 @@ navItems.forEach(item => {
         navLinks.classList.remove('active');
     });
 });
+
+// --- LIGHTBOX PRO BANNER ---
+function openLightbox() {
+    document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+}
