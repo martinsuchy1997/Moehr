@@ -33,109 +33,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// --- 3. MODAL SYSTÉM (PRO BALÍČKY SLUŽEB) ---
-
-// Funkce pro bezpečné zavření modalu pomocí třídy
-function closeModal(modalElement) {
-    if (modalElement) {
-        modalElement.classList.remove('is-open'); // Odstraní třídu pro viditelnost
-        document.body.style.overflow = 'auto';    // Vrátí scrollbar
-    }
-}
-
-// Otevírání modalů pomocí třídy
-const modalButtons = document.querySelectorAll('.modal-btn');
-modalButtons.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const modalId = this.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('is-open');       // Přidá třídu pro zobrazení
-            document.body.style.overflow = 'hidden'; // Zamkne scroll
-        }
-    });
-});
-
-// Zavírání modalů (kliknutí na křížek, pozadí nebo tlačítko)
-window.addEventListener('click', function(e) {
-    // 1. Kliknutí na křížek (třída .close)
-    if (e.target.classList.contains('close')) {
-        closeModal(e.target.closest('.modal'));
-    }
-    
-    // 2. Kliknutí na pozadí modalu (nyní kontrolujeme modal-overlay nebo modal samotný)
-    if (e.target.classList.contains('modal') || e.target.classList.contains('modal-overlay')) {
-        closeModal(e.target.closest('.modal'));
-    }
-
-    // 3. Kliknutí na tlačítko "Mám zájem"
-    if (e.target.classList.contains('btn-full')) {
-        closeModal(e.target.closest('.modal'));
-    }
-});
-
-// Podpora pro mobilní "tap" na křížek
-document.querySelectorAll('.close').forEach(closeBtn => {
-    closeBtn.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        closeModal(this.closest('.modal'));
-    }, { passive: false });
-});
-
-// --- 4. ACCORDION (CHYTRÁ HARMONIKA) ---
-document.querySelectorAll(".accordion-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-        // Najdeme skupinu, ve které se nacházíme (konkrétní modal)
-        const parent = this.closest('.accordion-group');
-        const content = this.nextElementSibling;
-        const icon = this.querySelector('.acc-icon');
-
-        // 1. Zavřeme všechny ostatní otevřené sekce v tomto modalu
-        parent.querySelectorAll('.accordion-content').forEach(otherContent => {
-            if (otherContent !== content) {
-                otherContent.style.display = "none";
-                // Resetujeme ikonky u ostatních tlačítek
-                const otherBtn = otherContent.previousElementSibling;
-                otherBtn.querySelector('.acc-icon').textContent = '+';
-                otherBtn.classList.remove("active");
-            }
-        });
-
-        // 2. Přepneme (otevřeme/zavřeme) tu, na kterou jsme klikli
-        this.classList.toggle("active");
-        if (content.style.display === "block") {
-            content.style.display = "none";
-            icon.textContent = '+';
-        } else {
-            content.style.display = "block";
-            icon.textContent = '−';
-        }
-    });
-});
-
-// --- 7. ANIMACE CENOVÝCH KARET ---
-// Jemné měřítko při najetí myší (pouze pro desktopy)
-if (window.innerWidth > 1024) {
-    document.querySelectorAll(".pricing-card").forEach(card => {
-        card.addEventListener("mouseenter", () => {
-            if (card.classList.contains("premium")) {
-                card.style.transform = "scale(1.07) translateY(-10px)";
-            } else {
-                card.style.transform = "translateY(-12px) scale(1.02)";
-            }
-        });
-        card.addEventListener("mouseleave", () => {
-            if (card.classList.contains("premium")) {
-                card.style.transform = "scale(1.05)";
-            } else {
-                card.style.transform = "translateY(0)";
-            }
-        });
-    });
-}
-
-// --- OVLÁDÁNÍ MOBILNÍHO MENU ---
+// --- 3. OVLÁDÁNÍ MOBILNÍHO MENU ---
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 const navItems = document.querySelectorAll('.nav-links a');
@@ -155,10 +53,106 @@ navItems.forEach(item => {
     });
 });
 
-// --- LIGHTBOX PRO BANNER ---
-function openLightbox() {
-    document.getElementById('lightbox').classList.add('active');
+
+const MODALS = {
+  priprava: {
+    tag: 'Řízení projektu',
+    title: 'Příprava stavby',
+    subtitle: 'Plánování, dokumentace a zajištění povolení před zahájením prací',
+    body: `<p>Každá úspěšná stavba začíná precizní přípravou. Náš tým zajišťuje veškerou předprojektovou dokumentaci, technické studie a komunikaci se státní správou, aby byl zahajovací den co nejhladší.</p>
+      <ul class="panel-list">
+        <li>Zpracování projektové dokumentace (DUR, DSP, DPS)</li>
+        <li>Vyřízení stavebního povolení a veškerých potřebných vyjádření</li>
+        <li>Koordinace geodetického zaměření a průzkumů staveniště</li>
+        <li>Sestavení podrobného harmonogramu a rozpočtu stavby</li>
+        <li>Výběr a smluvní zajištění subdodavatelů</li>
+      </ul>
+      <p>Díky systematické přípravě minimalizujeme rizika prodlení a vícenákladů ještě před tím, než první bagr najede na staveniště.</p>`
+  },
+  realizace: {
+    tag: 'Řízení projektu',
+    title: 'Realizace',
+    subtitle: 'Stavební práce vedené zkušeným stavbyvedoucím dle schváleného harmonogramu',
+    body: `<p>Ve fázi realizace přebíráme plnou odpovědnost za průběh stavebních prací. Každý den na staveništi je řízen jasnou strukturou velení, pravidelným reportingem a proaktivním řešením odchylek.</p>
+      <ul class="panel-list">
+        <li>Řízení staveniště certifikovaným stavbyvedoucím</li>
+        <li>Denní záznamy o postupu prací a plnění harmonogramu</li>
+        <li>Koordinace všech profesí — ZTI, elektro, VZT, statika</li>
+        <li>Pravidelné kontrolní dny s investorem</li>
+        <li>Přístup investora do online stavebního deníku v reálném čase</li>
+      </ul>
+      <p>Transparentní komunikace s investorem je pro nás samozřejmostí — žádná překvapení, pouze včasné informace a řešení.</p>`
+  },
+  kvalita: {
+    tag: 'Řízení projektu',
+    title: 'Kontrola kvality',
+    subtitle: 'Nezávislý technický dozor, inspekce a přejímky hotových prací',
+    body: `<p>Kvalita není náhoda — je výsledkem systematické kontroly v každé fázi výstavby. Uplatňujeme třístupňový kontrolní systém, který zachycuje odchylky dříve, než se stanou nákladnými problémy.</p>
+      <ul class="panel-list">
+        <li>Technický dozor investora (TDI) nezávislý na zhotoviteli</li>
+        <li>Vstupní kontrola materiálů a atestů před zabudováním</li>
+        <li>Mezioperační zkoušky zakrývaných konstrukcí</li>
+        <li>Zátěžové a funkční zkoušky technologií a instalací</li>
+        <li>Závěrečná přejímka a předání kompletní dokladové dokumentace</li>
+      </ul>
+      <p>Výsledkem je stavba, která odpovídá projektové dokumentaci, platným normám a přání investora — bez skrytých vad.</p>`
+  },
+  bozp: {
+    tag: 'Bezpečnost & Compliance',
+    title: 'Koordinátor BOZP',
+    subtitle: 'Odborný dohled nad bezpečností a ochranou zdraví na staveništi',
+    body: `<p>Bezpečnost pracovníků na staveništi je naší nejvyšší prioritou. Náš koordinátor BOZP je přítomen od první projektové porady až po předání stavby a dohlíží na dodržování všech předpisů.</p>
+      <ul class="panel-list">
+        <li>Zpracování Plánu BOZP dle zákona č. 309/2006 Sb.</li>
+        <li>Pravidelné bezpečnostní prohlídky staveniště</li>
+        <li>Vstupní školení pracovníků a vedení evidencí</li>
+        <li>Šetření mimořádných událostí a nastavení nápravných opatření</li>
+        <li>Komunikace s Inspektorátem bezpečnosti práce (IBP)</li>
+      </ul>
+      <p>Za dobu naší existence jsme dosáhli výrazně nižší úrazovosti, než je průměr oboru — na čem si zakládáme a co neustále zlepšujeme.</p>`
+  },
+  legal: {
+    tag: 'Bezpečnost & Compliance',
+    title: 'Právní & Compliance',
+    subtitle: 'Smluvní zajištění, normové požadavky a certifikace procesů',
+    body: `<p>Stavebnictví je silně regulované odvětví. Náš compliance tým zajišťuje, že každý projekt splňuje aktuální legislativní požadavky, a chrání tak zájmy investora i zhotovitele.</p>
+      <ul class="panel-list">
+        <li>Příprava a revize smluv o dílo (SoD) a podmínek FIDIC</li>
+        <li>Průběžné sledování změn legislativy — stavební zákon, NV, vyhlášky</li>
+        <li>Správa certifikací ISO 9001, ISO 14001, ISO 45001</li>
+        <li>Due diligence subdodavatelů a správa smluvních závazků</li>
+        <li>Řešení sporů, reklamací a záručních vad</li>
+      </ul>
+      <p>Proaktivní přístup k compliance snižuje riziko pokut, sporů a reputačních škod — investice do právní jistoty se vždy vyplatí.</p>`
+  }
+};
+
+const overlay = document.getElementById('overlay');
+const panelContent = document.getElementById('panelContent');
+const panel = document.getElementById('panel');
+
+function openModal(key) {
+  const d = MODALS[key];
+  if (!d) return;
+  panelContent.innerHTML = `
+    <div class="panel-tag">${d.tag}</div>
+    <div class="panel-title" id="panelTitle">${d.title}</div>
+    <div class="panel-subtitle">${d.subtitle}</div>
+    <div class="panel-body">${d.body}</div>
+  `;
+  panel.scrollTop = 0;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
-function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
+
+function closeModal() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
 }
+
+document.querySelectorAll('.box-clickable').forEach(b =>
+  b.addEventListener('click', () => openModal(b.dataset.modal))
+);
+document.getElementById('btnClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
