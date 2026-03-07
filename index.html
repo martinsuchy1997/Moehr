@@ -51,7 +51,6 @@
     </section>
 
 
-<body>
             <section id="sluzby" class="sluzby"></section>
                 <div class="container">
                     <div class="services-wrapper">
@@ -60,13 +59,13 @@
             <div class="service-row">
                 <div class="left-column">
                     <button class="main-button" onclick="toggleSubButtons('zhotovitele')">
-                        Zhotovitelé<br>Stavby Vedoucí
+                        SLUŽBY PRO Zhotovitele<br> a Stavbyvedoucí
                     </button>
                 </div>
                 <div class="right-column">
                     <div id="zhotovitele" class="sub-buttons-container">
                         <button class="sub-button" onclick="openModal('priprava1')">
-                            Příprava stavby
+                            PŘÍPRAVA A ZAŘÍZENÍ STAVENIŠTĚ
                         </button>
                         <button class="sub-button" onclick="openModal('realizace-standard')">
                             Realizace stavby<span class="badge red">STANDART</span>
@@ -82,7 +81,7 @@
             <div class="service-row">
                 <div class="left-column">
                     <button class="main-button" onclick="toggleSubButtons('investori')">
-                        Investoři<br>Projektanti
+                       služby pro Investory a<br>Projektanty
                     </button>
                 </div>
                 <div class="right-column">
@@ -104,14 +103,14 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('priprava1')">&times;</span>
             <h2>Příprava stavby</h2>
-            <p>Nabízíme komplexní služby pro přípravu stavby včetně:</p>
+            <p>Praktická řešení pro bezpečný chod stavby.
+                Technik BOZP (OZO v prevenci rizik / „Bezpečák") (Zajištujeme bezpečné postupy Vaši firmy a vybavení staveniště).</p>
             <ul>
-                <li>Konzultace a poradenství</li>
-                <li>Zpracování dokumentace</li>
-                <li>Zajištění povolení</li>
-                <li>Koordinace s úřady</li>
+                <li>Nastavení pravidel pro zajištění bezpečného pracoviště před nástupem lidí.</li>
+                <li>Návrh vybavení staveniště: Optimalizace řešení pro splnění požadavků BOZP na vybavení a zázemí stavenišť (Dle projektu či standardů).</li>
+                <li>Zpracování rizik: Identifikace nebezpečí a návrh konkrétních opatření a jejich odstranění.</li>
+                <li>Odborné školení: Pro školení pracovníků přímo pro podmínky dané stavby.</li>
             </ul>
-            <button class="modal-button" onclick="closeModal('priprava1')">Zavřít</button>
         </div>
     </div>
 
@@ -119,14 +118,11 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('realizace-standard')">&times;</span>
             <h2>Realizace stavby - STANDART</h2>
-            <p>Standardní balíček realizace stavby zahrnuje:</p>
+            <p>Vybavení stavby prvky BOZP dle zpracovaného návrhu projektové dokumentace (Zpracování části zařízení staveniště). </p>
             <ul>
-                <li>Základní technický dozor</li>
-                <li>Koordinaci dodavatelů</li>
-                <li>Pravidelné kontroly kvality</li>
-                <li>Dokumentaci průběhu stavby</li>
+                <li>Předání provozního manuálu: Kompletní podklady pro bezpečné užívání staveniště.</li>
+                <li>Informační systém: Dodání bezpečnostních tabulek a základního značení.</li>
             </ul>
-            <button class="modal-button" onclick="closeModal('realizace-standard')">Zavřít</button>
         </div>
     </div>
 
@@ -134,50 +130,64 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('realizace-premium')">&times;</span>
             <h2>Realizace stavby - PREMIUM</h2>
-            <p>Prémiový balíček nabízí komplexní služby:</p>
+            <p>Komplexní servis a delegování odpovědnosti.</p>
             <ul>
-                <li>Nepřetržitý technický dozor</li>
-                <li>Kompletní projektový management</li>
-                <li>Pokročilá kontrola kvality</li>
-                <li>Detailní reporting a dokumentace</li>
-                <li>Osobní konzultant na projektu</li>
+                <li>Kompletní informační systém: Návrh a instalace brandovaných bannerů, bezpečnostních tabulek a navigačního systému stavby.</li>
+                <li>Delegování odpovědnosti: Převezmeme Vaši zodpovědnost za oblast BOZP při jednání s dotčeními orgány státní zprávy. </li>
+                <li>Systém pravidelných kontrol: Nastavení a provádění fixního cyklu auditů bezpečnosti technikem BOZP. </li>
             </ul>
-            <button class="modal-button" onclick="closeModal('realizace-premium')">Zavřít</button>
         </div>
     </div>
 
-    <div id="modal-priprava2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('priprava2')">&times;</span>
-            <h2>Příprava stavby - Investoři</h2>
-            <p>Pro investory a projektanty připravujeme:</p>
+
+
+
+
+
+
+    <!--Investoři a Projektanti-->
+<div id="modal-priprava2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('priprava2')">&times;</span>
+        <div class="modal-inner-text"> <h2>PŘÍPRAVA STAVBY</h2>
+            <p>
+                Zaměřeno na legislativu, přípravu a výkon funkce koordinátora.
+                Odborné posouzení a příprava na realizaci stavebního záměru z hlediska možných rizik...
+            </p>
             <ul>
-                <li>Technické konzultace</li>
-                <li>Posouzení projektové dokumentace</li>
-                <li>Návrhy optimalizací</li>
-                <li>Zajištění správních řízení</li>
+                <li>Zpracováni Plánu BOZP pro fázi přípravy stavby a vyřízení stavebního povolení.</li>
+                <li>Analýza vnějších vlivů: Odborné posouzení prostředí a vlivů v místě budoucí výstavby.</li>
+                <li>Koordinátor BOZP na staveništi: Zajištujeme vaši zákonnou odpovědnost...</li>
+                <li>Návrhy opatření: Nastavení pravidel pro bezpečné provádění prací už v projektu.</li>
+                <li>Spolupráce s projektantem: Odborné posouzení dokumentace z hlediska BOZP.</li>
             </ul>
-            <button class="modal-button" onclick="closeModal('priprava2')">Zavřít</button>
         </div>
     </div>
+</div>
 
     <div id="modal-realizace2" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('realizace2')">&times;</span>
-            <h2>Realizace stavby - Investoři</h2>
-            <p>Komplexní služby pro investory zahrnují:</p>
+            <h2>Realizace stavby</h2>
+            <p>Zajištěni zákonných povinností majitele stavby souvisejících s bezpečností práce.
+Zákonná povinnost
+(Zde v grafice nahradit "panáčka" symbolem paragrafu nebo váhy)
+Koordinátor BOZP musí být určen investorem v případě, že:
+Na stavbě budou působit současně zaměstnanci více než jednoho zhotovitele.
+- Rozsah stavby přesáhne 3 0 pracovních dnů, ve kterých bude pracovat současně více než 20 osob po dobu delší než 1 pracovní den.
+- Celkový objem prací přesáhne 500 pracovních dnů v přepočtu n a jednoho pracovníka.
+V přesném znění zákona 309/2006 SB.
+</p>
             <ul>
-                <li>Kontrolu dodržování projektové dokumentace</li>
-                <li>Řízení rozpočtu a termínů</li>
-                <li>Komunikaci s dodavateli</li>
-                <li>Reporting pro investora</li>
-                <li>Zastupování na stavbě</li>
+                <li>Ohlášení na OIP: Kompletní administrativní zajištění oznámení o zahájení prací.</li>
+                <li>Výkon koordinátora BOZP na staveništi: Pravidelný dohled a činnost koordinátora při práci na staveništi.</li>
+                <li>Kontrolní činnost: Prověřování dodržováni ustavení plánu BOZP všemi zhotoviteli a koordinace na staveništi.</li>
+                <li>Návrhy opatření k odstranění možných rizik při práci na staveništi.</li>
             </ul>
-            <button class="modal-button" onclick="closeModal('realizace2')">Zavřít</button>
         </div>
     </div>
 
-
+    
 
         <div class="modal-footer">
         </div>
@@ -190,7 +200,7 @@
                 <p>✉️ <a href="mailto:lucie.kralova@moehr.cz">lucie.kralova@moehr.cz</a></p>
             </div>
         </div>
-    </section>
+    </body>
     
 <footer>
     <p>&copy; 2026 MOEHR s.r.o. – Všechna práva vyhrazena.</p>

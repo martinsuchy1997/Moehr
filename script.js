@@ -53,27 +53,31 @@ navItems.forEach(item => {
     });
 });
 
-       function toggleSubButtons(id) {
-            const container = document.getElementById(id);
-            container.classList.toggle('active');
-        }
 
-        function openModal(modalName) {
-            const modal = document.getElementById('modal-' + modalName);
-            modal.style.display = 'block';
-        }
 
-        function closeModal(modalName) {
-            const modal = document.getElementById('modal-' + modalName);
-            modal.style.display = 'none';
-        }
+function toggleSubButtons(id) {
+    const container = document.getElementById(id);
+    container.classList.toggle('active');
+}
 
-        // Zavřít modal při kliknutí mimo něj
-        window.onclick = function(event) {
-            const modals = document.getElementsByClassName('modal');
-            for (let modal of modals) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
-        }
+
+function openModal(modalName) {
+    const modal = document.getElementById('modal-' + modalName);
+    if (modal) {
+        modal.classList.add('is-open');
+    }
+}
+
+function closeModal(modalName) {
+    const modal = document.getElementById('modal-' + modalName);
+    if (modal) {
+        modal.classList.remove('is-open');
+    }
+}
+
+// Zavřít modal při kliknutí mimo něj do ztmaveného pozadí
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('is-open');
+    }
+}
