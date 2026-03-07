@@ -555,6 +555,28 @@ footer {
     .modal-content h2 { font-size: 1.4rem; }
 }
 
+/* MOBIL – sekce služby */
+@media (max-width: 768px) {
+
+.service-row{
+    flex-direction: column;
+    gap: 20px;
+}
+
+.left-column{
+    min-width: 100%;
+}
+
+.right-column{
+    width: 100%;
+}
+
+.sub-button{
+    font-size: 14px;
+    padding: 18px;
+}
+
+}
 
 
 
