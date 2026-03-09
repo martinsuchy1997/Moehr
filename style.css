@@ -732,8 +732,12 @@ footer {
     #o-nas p { 
         padding-bottom: 10px;
         font-size: 1rem;
-    
     }
 
+    body::before {
+        background-size: clamp(150px, 80vw, 350px);
+    }
 }
+
+
 
